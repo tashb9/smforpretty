@@ -118,11 +118,13 @@ body{
 }
 
 /* Hide the flower canvas (since we turned animation off) */
+/* Show the flower canvas (animation draws here) */
 #garden{
-  display:none;
+  display:block;
   width:100%;
   height:100%;
 }
+
 
 /* Moon */
 #moon{
