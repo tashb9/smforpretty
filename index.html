@@ -1,103 +1,96 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="UTF-8" />
 <title>For the Best Girl Ever</title>
 
-<style type="text/css">
+<!-- Font Awesome (for moon icon if needed later) -->
+<script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
+
+<style>
 @font-face {
-	font-family: digit;
-	src: url('digital-7_mono.ttf') format("truetype");
+  font-family: digit;
+  src: url('digital-7_mono.ttf') format("truetype");
 }
 </style>
 
-<link href="css/default.css" type="text/css" rel="stylesheet">
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/garden.js"></script>
-<script type="text/javascript" src="js/functions.js"></script>
+<link rel="stylesheet" href="css/default.css" />
+
+<script src="js/jquery.js"></script>
+<script src="js/garden.js"></script>
+<script src="js/functions.js"></script>
 </head>
 
 <body>
+
 <div id="mainDiv">
-	<div id="content">
-		<div id="code">
-			<span class="comments">/**</span><br />
-			<span class="space"/><span class="comments"></span><br />
-			<span class="space"/><span class="comments">*/</span><br />
+  <div id="content">
 
-			Hey Pretty ✨<br />
-			Remember the first day we kissed?<br />
-			<span class="comments">// The lil Staircase in RC.</span><br />
-			Since then, ever since OGF, I have been on the top of the world;<br />
-			<span class="comments">// oya nisa mage jeewithe mal.</span><br />
-			jokes aside, I am glad our paths crossed the way it did;<br />
-			And unlike those shooting stars I used to write songs about;<br />
-			We never drifted apart :')<br />
-			I might be your Sirius;<br />
-			But you'll always be the Charon to my Pluto;<br />
-			<br />
-			<br />
-			Baby, I will love you forever;<br />
-			<br />
-			<br />
-			Now I've got one last thing for you now tap the heart 💫<br />
-			<br />
+    <!-- LEFT: CODE -->
+    <div id="code">
+      <span class="comments">/**</span><br/>
+      <span class="space"></span><span class="comments">* THE CODE OF LOVE</span><br/>
+      <span class="space"></span><span class="comments">*/</span><br/><br/>
 
-			<span id="heartspan">
-				<a href="image.jpg"><i class="fas fa-heart" id="icon"></i></a>
-			</span>
-		</div>
+      Hey Pretty ✨<br/>
+      Somehow, in all this endless universe;<br/>
+      Our paths crossed at the exact right moment;<br/>
+      <span class="comments">// A rare alignment.</span><br/>
+      <br/>
+      I might be your Sirius;<br/>
+      But you’ll always be the Charon to my Pluto;<br/>
+      <span class="comments">// Two worlds, one orbit.</span><br/>
+      <br/>
+      Just like Pluto and Charon;<br/>
+      Always circling, never drifting apart;<br/>
+      Two bodies, held in balance;<br/>
+      <br/><br/>
+      I will love you, always;<br/>
+    </div>
 
-		<div id="loveHeart">
-			<!-- keep canvas in DOM for compatibility, but we hide it in CSS -->
-			<canvas id="garden"></canvas>
+    <!-- RIGHT: SPACE -->
+    <div id="loveHeart">
 
-			<!-- NEW: Moon -->
-			<div id="moon" aria-hidden="true"></div>
+      <!-- Moon -->
+      <div id="moon"></div>
 
-			<div id="words">
-				<div id="messages">
-					Chain eke Forever baby
-					<div id="elapseClock"></div>
-				</div>
-				<div id="loveu">
-					ආදරෙයි පැලෙන්න මගේ හඳ <br/>
-					<div class="signature">- tash</div>
-				</div>
-			</div>
-		</div>
+      <!-- Words -->
+      <div id="words">
+        <div id="messages">
+          Forever, in this orbit 💫
+          <div id="elapseClock"></div>
+        </div>
 
-	</div>
+        <div id="loveu">
+          ආදරෙයි පැලෙන්න මගේ හඳ <br/>
+          <div class="signature">– tash</div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
 </div>
 
-<script type="text/javascript">
-var offsetX = $("#loveHeart").width() / 2;
-var offsetY = $("#loveHeart").height() / 2 - 55;
+<script>
+/* Anniversary / together date */
 var together = new Date();
-together.setFullYear(2022, 6, 16); // NOTE: month is 0-based (July=6). Change if you meant June (5).
+together.setFullYear(2022, 5, 16); // June 16, 2022 (MONTH IS 0-BASED)
 together.setHours(0);
 together.setMinutes(0);
 together.setSeconds(0);
 together.setMilliseconds(0);
 
-if (!document.createElement('canvas').getContext) {
-	var msg = document.createElement("div");
-	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
-	document.body.appendChild(msg);
-	$("#code").css("display", "none")
-	document.execCommand("stop");
-} else {
-	// TURN OFF FLOWER/HEART ANIMATION:
-	// setTimeout(function () { startHeartAnimation(); }, 5000);
+/* Timer */
+timeElapse(together);
+setInterval(function () {
+  timeElapse(together);
+}, 500);
 
-	timeElapse(together);
-	setInterval(function () { timeElapse(together); }, 500);
-
-	adjustCodePosition();
-	$("#code").typewriter();
-}
+/* Reveal text (no heart animation anymore) */
+$("#messages").fadeIn(1200);
+$("#loveu").fadeIn(1600);
 </script>
+
 </body>
 </html>
