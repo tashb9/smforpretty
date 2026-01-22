@@ -19,3 +19,170 @@
 #copyright a{color:#666}
 #icon{font-size: 48px;color: red;margin: 50 px; align-content: center;}
 #heartspan{align-content: center;text-align: center;margin: 20px;}
+
+/* Twinkling star overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 15% 30%, rgba(255,255,255,0.10) 1px, transparent 2px),
+    radial-gradient(circle at 40% 20%, rgba(255,255,255,0.08) 1px, transparent 2px),
+    radial-gradient(circle at 65% 60%, rgba(255,255,255,0.07) 1px, transparent 2px),
+    radial-gradient(circle at 80% 35%, rgba(255,255,255,0.06) 1px, transparent 2px),
+    radial-gradient(circle at 25% 75%, rgba(255,255,255,0.06) 1px, transparent 2px);
+  opacity: 0.65;
+  animation: twinkle 4.5s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.35; filter: blur(0px); }
+  100% { opacity: 0.75; filter: blur(0.3px); }
+}
+
+/* ============================
+   Astronomy Theme Overrides
+   Paste at END of default.css
+   ============================ */
+
+/* Night sky background + subtle starfield */
+html, body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  color: #e9ecff;
+  background:
+    radial-gradient(1200px 800px at 20% 10%, rgba(120, 140, 255, 0.18), transparent 60%),
+    radial-gradient(900px 700px at 80% 20%, rgba(255, 120, 200, 0.10), transparent 55%),
+    radial-gradient(1200px 900px at 50% 100%, rgba(60, 220, 255, 0.08), transparent 60%),
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.10) 1px, transparent 2px),
+    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.08) 1px, transparent 2px),
+    radial-gradient(circle at 55% 35%, rgba(255,255,255,0.07) 1px, transparent 2px),
+    radial-gradient(circle at 75% 70%, rgba(255,255,255,0.06) 1px, transparent 2px),
+    radial-gradient(circle at 90% 40%, rgba(255,255,255,0.06) 1px, transparent 2px),
+    linear-gradient(180deg, #070815 0%, #050611 35%, #03040b 100%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+/* Slight vignette for “space depth” */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 40%, transparent 0%, rgba(0,0,0,0.45) 70%, rgba(0,0,0,0.65) 100%);
+  mix-blend-mode: multiply;
+}
+
+/* Make the main container feel like glass */
+#mainDiv {
+  position: relative;
+}
+
+#content {
+  border-radius: 18px;
+  background: rgba(10, 12, 30, 0.55);
+  box-shadow:
+    0 20px 60px rgba(0,0,0,0.55),
+    0 0 0 1px rgba(180, 200, 255, 0.12) inset;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* “Code” section: terminal-ish but soft */
+#code {
+  color: rgba(235, 240, 255, 0.92);
+  text-shadow: 0 0 18px rgba(120, 150, 255, 0.12);
+  line-height: 1.65;
+  letter-spacing: 0.2px;
+}
+
+/* Comments: mint/cyan like sci-fi HUD */
+#code .comments {
+  color: rgba(120, 255, 225, 0.75);
+  text-shadow: 0 0 16px rgba(120, 255, 225, 0.10);
+}
+
+/* Heart: neon glow */
+#heartspan a {
+  text-decoration: none;
+}
+
+#icon {
+  color: #ff4fd8 !important;
+  text-shadow:
+    0 0 10px rgba(255, 79, 216, 0.65),
+    0 0 25px rgba(255, 79, 216, 0.35),
+    0 0 60px rgba(120, 140, 255, 0.20);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+#icon:hover {
+  transform: scale(1.12);
+  filter: brightness(1.15);
+}
+
+/* The heart canvas area: give it a soft cosmic halo */
+#loveHeart {
+  position: relative;
+}
+
+#loveHeart::before {
+  content: "";
+  position: absolute;
+  inset: -18px;
+  border-radius: 22px;
+  background: radial-gradient(600px 400px at 50% 40%, rgba(120, 140, 255, 0.22), transparent 60%);
+  pointer-events: none;
+  filter: blur(2px);
+}
+
+/* Messages text styling */
+#messages {
+  color: rgba(235, 240, 255, 0.95);
+  text-shadow: 0 0 18px rgba(120, 140, 255, 0.18);
+  letter-spacing: 0.3px;
+}
+
+/* Timer (elapseClock) should pop a bit */
+#elapseClock {
+  color: rgba(120, 255, 225, 0.90);
+  text-shadow: 0 0 18px rgba(120, 255, 225, 0.22);
+}
+
+/* “I love you” block */
+#loveu {
+  color: rgba(235, 240, 255, 0.92);
+  text-shadow: 0 0 20px rgba(255, 79, 216, 0.10);
+}
+
+#loveu .signature {
+  color: rgba(255, 79, 216, 0.85);
+  text-shadow: 0 0 18px rgba(255, 79, 216, 0.18);
+}
+
+/* Links */
+a {
+  color: rgba(120, 255, 225, 0.85);
+}
+a:hover {
+  color: rgba(255, 79, 216, 0.90);
+}
+
+/* Mobile friendliness a bit */
+@media (max-width: 768px) {
+  #content {
+    margin: 12px;
+    border-radius: 16px;
+  }
+  #code {
+    font-size: 14px;
+  }
+}
