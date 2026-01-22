@@ -1,77 +1,32 @@
-﻿body{margin:0;padding:0;background:#ffe;font-size:12px;overflow:auto}
-#mainDiv{width:100%;height:100%}
-#loveHeart{float:left;width:670px;height:625px}
-#garden{width:100%;height:100%}
-#elapseClock{text-align:right;font-size:18px;margin-top:10px;margin-bottom:10px}
-#words{font-family:"sans-serif";width:500px;font-size:24px;color:#666}
-#messages{display:none;text-align: center;font-size: 30px}
-#elapseClock .digit{font-family:"digit";font-size:40px;text-align: center;}
-#loveu{padding:5px;font-size:22px;margin-top:80px;margin-right:120px;text-align:right;display:none}
-#loveu .signature{margin-top:10px;font-size:20px;font-style:italic}
-#clickSound{display:none}
-#code{float:left;width:440px;height:400px;color:#333;font-family:"Consolas","Monaco","Bitstream Vera Sans Mono","Courier New","sans-serif";font-size:12px}
-#code .string{color:#2a36ff}
-#code .keyword{color:#7f0055;font-weight:bold}
-#code .placeholder{margin-left:15px}#code .space{margin-left:7px}
-#code .comments{color:#3f7f5f}
-#copyright{margin-top:10px;text-align:center;width:100%;color:#666}
-#errorMsg{width:100%;text-align:center;font-size:24px;position:absolute;top:100px;left:0}
-#copyright a{color:#666}
-#icon{font-size: 48px;color: red;margin: 50 px; align-content: center;}
-#heartspan{align-content: center;text-align: center;margin: 20px;}
-
-/* Twinkling star overlay */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at 15% 30%, rgba(255,255,255,0.10) 1px, transparent 2px),
-    radial-gradient(circle at 40% 20%, rgba(255,255,255,0.08) 1px, transparent 2px),
-    radial-gradient(circle at 65% 60%, rgba(255,255,255,0.07) 1px, transparent 2px),
-    radial-gradient(circle at 80% 35%, rgba(255,255,255,0.06) 1px, transparent 2px),
-    radial-gradient(circle at 25% 75%, rgba(255,255,255,0.06) 1px, transparent 2px);
-  opacity: 0.65;
-  animation: twinkle 4.5s ease-in-out infinite alternate;
-  mix-blend-mode: screen;
-}
-
-@keyframes twinkle {
-  0%   { opacity: 0.35; filter: blur(0px); }
-  100% { opacity: 0.75; filter: blur(0.3px); }
-}
-
 /* ============================
-   Astronomy Theme Overrides
-   Paste at END of default.css
+   LoveProject - Astronomy Theme
+   Full default.css replacement
    ============================ */
 
-/* Night sky background + subtle starfield */
 html, body {
   height: 100%;
 }
 
 body {
   margin: 0;
+  padding: 0;
+  font-size: 12px;
+  overflow-x: hidden;
+  overflow-y: auto;
   color: #e9ecff;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Space background */
   background:
     radial-gradient(1200px 800px at 20% 10%, rgba(120, 140, 255, 0.18), transparent 60%),
     radial-gradient(900px 700px at 80% 20%, rgba(255, 120, 200, 0.10), transparent 55%),
     radial-gradient(1200px 900px at 50% 100%, rgba(60, 220, 255, 0.08), transparent 60%),
-    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.10) 1px, transparent 2px),
-    radial-gradient(circle at 30% 80%, rgba(255,255,255,0.08) 1px, transparent 2px),
-    radial-gradient(circle at 55% 35%, rgba(255,255,255,0.07) 1px, transparent 2px),
-    radial-gradient(circle at 75% 70%, rgba(255,255,255,0.06) 1px, transparent 2px),
-    radial-gradient(circle at 90% 40%, rgba(255,255,255,0.06) 1px, transparent 2px),
-    linear-gradient(180deg, #070815 0%, #050611 35%, #03040b 100%);
+    linear-gradient(180deg, #070815 0%, #050611 45%, #03040b 100%);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  overflow-x: hidden;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
-/* Slight vignette for “space depth” */
+/* Vignette for depth */
 body::before {
   content: "";
   position: fixed;
@@ -81,13 +36,47 @@ body::before {
   mix-blend-mode: multiply;
 }
 
-/* Make the main container feel like glass */
+/* Twinkling star overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 12% 22%, rgba(255,255,255,0.12) 1px, transparent 2px),
+    radial-gradient(circle at 25% 78%, rgba(255,255,255,0.10) 1px, transparent 2px),
+    radial-gradient(circle at 40% 35%, rgba(255,255,255,0.08) 1px, transparent 2px),
+    radial-gradient(circle at 55% 65%, rgba(255,255,255,0.07) 1px, transparent 2px),
+    radial-gradient(circle at 72% 28%, rgba(255,255,255,0.07) 1px, transparent 2px),
+    radial-gradient(circle at 88% 58%, rgba(255,255,255,0.06) 1px, transparent 2px);
+  opacity: 0.65;
+  animation: twinkle 4.5s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
+}
+
+@keyframes twinkle {
+  0%   { opacity: 0.35; filter: blur(0px); }
+  100% { opacity: 0.78; filter: blur(0.4px); }
+}
+
+/* Main layout */
 #mainDiv {
-  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 28px 18px;
+  box-sizing: border-box;
 }
 
 #content {
+  width: min(1180px, 100%);
+  display: flex;
+  gap: 22px;
+  padding: 22px;
   border-radius: 18px;
+
   background: rgba(10, 12, 30, 0.55);
   box-shadow:
     0 20px 60px rgba(0,0,0,0.55),
@@ -96,26 +85,41 @@ body::before {
   -webkit-backdrop-filter: blur(10px);
 }
 
-/* “Code” section: terminal-ish but soft */
+/* Left “code” panel */
 #code {
+  width: 440px;
+  max-width: 100%;
+  height: auto;
   color: rgba(235, 240, 255, 0.92);
-  text-shadow: 0 0 18px rgba(120, 150, 255, 0.12);
-  line-height: 1.65;
+  font-family: "Consolas","Monaco","Bitstream Vera Sans Mono","Courier New", monospace;
+  font-size: 12.5px;
+  line-height: 1.7;
   letter-spacing: 0.2px;
+  text-shadow: 0 0 18px rgba(120, 150, 255, 0.12);
 }
 
-/* Comments: mint/cyan like sci-fi HUD */
+#code .string { color: rgba(140, 165, 255, 0.95); }
+#code .keyword { color: rgba(255, 120, 200, 0.90); font-weight: bold; }
+#code .placeholder { margin-left: 15px; }
+#code .space { margin-left: 7px; }
+
 #code .comments {
   color: rgba(120, 255, 225, 0.75);
   text-shadow: 0 0 16px rgba(120, 255, 225, 0.10);
 }
 
-/* Heart: neon glow */
+/* Heart link */
+#heartspan {
+  text-align: center;
+  margin-top: 18px;
+}
+
 #heartspan a {
   text-decoration: none;
 }
 
 #icon {
+  font-size: 52px;
   color: #ff4fd8 !important;
   text-shadow:
     0 0 10px rgba(255, 79, 216, 0.65),
@@ -129,60 +133,10 @@ body::before {
   filter: brightness(1.15);
 }
 
-/* The heart canvas area: give it a soft cosmic halo */
+/* Right panel */
 #loveHeart {
+  flex: 1;
+  min-width: 520px;
+  height: 625px;
   position: relative;
-}
-
-#loveHeart::before {
-  content: "";
-  position: absolute;
-  inset: -18px;
-  border-radius: 22px;
-  background: radial-gradient(600px 400px at 50% 40%, rgba(120, 140, 255, 0.22), transparent 60%);
-  pointer-events: none;
-  filter: blur(2px);
-}
-
-/* Messages text styling */
-#messages {
-  color: rgba(235, 240, 255, 0.95);
-  text-shadow: 0 0 18px rgba(120, 140, 255, 0.18);
-  letter-spacing: 0.3px;
-}
-
-/* Timer (elapseClock) should pop a bit */
-#elapseClock {
-  color: rgba(120, 255, 225, 0.90);
-  text-shadow: 0 0 18px rgba(120, 255, 225, 0.22);
-}
-
-/* “I love you” block */
-#loveu {
-  color: rgba(235, 240, 255, 0.92);
-  text-shadow: 0 0 20px rgba(255, 79, 216, 0.10);
-}
-
-#loveu .signature {
-  color: rgba(255, 79, 216, 0.85);
-  text-shadow: 0 0 18px rgba(255, 79, 216, 0.18);
-}
-
-/* Links */
-a {
-  color: rgba(120, 255, 225, 0.85);
-}
-a:hover {
-  color: rgba(255, 79, 216, 0.90);
-}
-
-/* Mobile friendliness a bit */
-@media (max-width: 768px) {
-  #content {
-    margin: 12px;
-    border-radius: 16px;
-  }
-  #code {
-    font-size: 14px;
-  }
-}
+  border-ra
