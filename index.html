@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <script src="https://kit.fontawesome.com/a14ae32021.js" crossorigin="anonymous"></script>
@@ -11,45 +11,51 @@
 	src: url('digital-7_mono.ttf') format("truetype");
 }
 </style>
+
 <link href="css/default.css" type="text/css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/garden.js"></script>
 <script type="text/javascript" src="js/functions.js"></script>
-
 </head>
 
 <body>
-
 <div id="mainDiv">
 	<div id="content">
 		<div id="code">
 			<span class="comments">/**</span><br />
+			<span class="space"/><span class="comments"></span><br />
 			<span class="space"/><span class="comments">*/</span><br />
-			Hey Pretty !<br />
+
+			Hey Pretty ✨<br />
 			Remember the first day we kissed?<br />
-			<span class="comments">// The lil Staircase in RC. </span><br />
-			Since then, ever since OGF, I have been on the top of the wrld;<br />
+			<span class="comments">// The lil Staircase in RC.</span><br />
+			Since then, ever since OGF, I have been on the top of the world;<br />
 			<span class="comments">// oya nisa mage jeewithe mal.</span><br />
 			jokes aside, I am glad our paths crossed the way it did;<br />
-			And unlike those shooting stars i used to write songs about,;<br />
-			We never drifted apart :');<br />
-			I might be your sirius;<br />
-			But you'll always be the Charon to my Pluto ;<br />
-			<span class="comments">// You'll have to google whats crazy about them, sorry.</span><br />
-			<br>
-			<br>
-			you are my everything,:<br />
+			And unlike those shooting stars I used to write songs about;<br />
+			We never drifted apart :')<br />
+			I might be your Sirius;<br />
+			But you'll always be the Charon to my Pluto;<br />
+			<br />
+			<br />
 			Baby, I will love you forever;<br />
-			<br>
-			<br>
-			Now I've got one last thing for u, tap on the damn heart<br />
-			<br>
+			<br />
+			<br />
+			Now I've got one last thing for you now tap the heart 💫<br />
+			<br />
+
 			<span id="heartspan">
-			<a href="image.jpg"><i class="fas fa-heart" id="icon"></i></a>
+				<a href="image.jpg"><i class="fas fa-heart" id="icon"></i></a>
 			</span>
 		</div>
+
 		<div id="loveHeart">
+			<!-- keep canvas in DOM for compatibility, but we hide it in CSS -->
 			<canvas id="garden"></canvas>
+
+			<!-- NEW: Moon -->
+			<div id="moon" aria-hidden="true"></div>
+
 			<div id="words">
 				<div id="messages">
 					Chain eke Forever baby
@@ -61,6 +67,7 @@
 				</div>
 			</div>
 		</div>
+
 	</div>
 </div>
 
@@ -68,7 +75,7 @@
 var offsetX = $("#loveHeart").width() / 2;
 var offsetY = $("#loveHeart").height() / 2 - 55;
 var together = new Date();
-together.setFullYear(2022, 6, 16);
+together.setFullYear(2022, 6, 16); // NOTE: month is 0-based (July=6). Change if you meant June (5).
 together.setHours(0);
 together.setMinutes(0);
 together.setSeconds(0);
@@ -77,21 +84,16 @@ together.setMilliseconds(0);
 if (!document.createElement('canvas').getContext) {
 	var msg = document.createElement("div");
 	msg.id = "errorMsg";
-	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+"; 
+	msg.innerHTML = "Your browser doesn't support HTML5!<br/>Recommend use Chrome 14+/IE 9+/Firefox 7+/Safari 4+";
 	document.body.appendChild(msg);
 	$("#code").css("display", "none")
-	$("#copyright").css("position", "absolute");
-	$("#copyright").css("bottom", "10px");
 	document.execCommand("stop");
 } else {
-	setTimeout(function () {
-		startHeartAnimation();
-	}, 5000);
+	// TURN OFF FLOWER/HEART ANIMATION:
+	// setTimeout(function () { startHeartAnimation(); }, 5000);
 
 	timeElapse(together);
-	setInterval(function () {
-		timeElapse(together);
-	}, 500);
+	setInterval(function () { timeElapse(together); }, 500);
 
 	adjustCodePosition();
 	$("#code").typewriter();
