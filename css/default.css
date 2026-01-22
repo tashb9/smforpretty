@@ -215,3 +215,67 @@ body{
   #loveHeart{ min-width:0; width:100%; height:560px; }
   #code{ width:100%; }
 }
+
+/* ===== Show & place timer + love text under the moon ===== */
+
+/* Make sure the right-side text is visible */
+#messages { display: block !important; }
+#loveu { display: block !important; }
+
+/* Put BOTH blocks on the right, under the moon */
+#words{
+  position: absolute !important;
+  inset: 0 !important;
+  z-index: 3 !important;
+}
+
+/* Timer block */
+#messages{
+  position: absolute !important;
+  top: 165px !important;      /* below the moon */
+  right: 26px !important;
+  width: 260px !important;
+  text-align: right !important;
+  font-size: 18px !important;
+  line-height: 1.25 !important;
+
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  background: rgba(8,10,24,0.35) !important;
+  box-shadow: 0 0 0 1px rgba(180,200,255,0.10) inset !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+/* The actual clock numbers */
+#elapseClock{
+  margin-top: 10px !important;
+  text-align: right !important;
+}
+
+#elapseClock .digit{
+  font-family: digit !important;
+  font-size: 34px !important;
+}
+
+/* Love line under the timer */
+#loveu{
+  position: absolute !important;
+  top: 300px !important;      /* under the timer block */
+  right: 26px !important;
+  width: 260px !important;
+  text-align: right !important;
+  font-size: 18px !important;
+
+  padding: 12px 14px !important;
+  border-radius: 14px !important;
+  background: rgba(8,10,24,0.25) !important;
+  box-shadow: 0 0 0 1px rgba(180,200,255,0.08) inset !important;
+  backdrop-filter: blur(6px) !important;
+}
+
+#loveu .signature{
+  margin-top: 8px !important;
+  font-size: 16px !important;
+  opacity: 0.9 !important;
+}
+
