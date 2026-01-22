@@ -1,157 +1,208 @@
 /* ===== RESET ===== */
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
-body {
-  margin: 0;
-  padding: 0;
-  font-size: 12px;
-  font-family: "Consolas", "Courier New", monospace;
-  color: #e9ecff;
-  overflow-x: hidden;
-
+body{
+  margin:0;
+  padding:0;
+  font-size:12px;
+  overflow-x:hidden;
+  color:#e9ecff;
   background:
     radial-gradient(1200px 800px at 20% 10%, rgba(120,140,255,0.18), transparent 60%),
     radial-gradient(900px 700px at 80% 20%, rgba(255,120,200,0.10), transparent 55%),
     linear-gradient(180deg, #070815 0%, #050611 45%, #03040b 100%);
   background-attachment: fixed;
+  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
 }
 
 /* ===== LAYOUT ===== */
-#mainDiv {
-  min-height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 24px;
+#mainDiv{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:24px;
+  box-sizing:border-box;
 }
 
-#content {
-  width: min(1200px, 100%);
-  display: flex;
-  gap: 20px;
-  padding: 20px;
-  border-radius: 18px;
-
+#content{
+  width:min(1200px, 100%);
+  display:flex;
+  gap:20px;
+  padding:20px;
+  border-radius:18px;
   background: rgba(10, 12, 30, 0.55);
   box-shadow: 0 25px 70px rgba(0,0,0,0.55);
   backdrop-filter: blur(10px);
 }
 
 /* ===== LEFT PANEL ===== */
-#code {
-  width: 440px;
-  padding: 16px;
-  border-radius: 14px;
+#code{
+  width:440px;
+  padding:16px;
+  border-radius:14px;
   background: rgba(8,10,24,0.55);
-
-  font-size: 12.5px;
-  line-height: 1.7;
+  font-family: "Consolas","Courier New", monospace;
+  font-size:12.5px;
+  line-height:1.7;
 }
 
-#code .comments {
-  color: rgba(120,255,225,0.75);
-}
-
-#code .space {
-  margin-left: 6px;
-}
+#code .comments{ color: rgba(120,255,225,0.75); }
+#code .space{ margin-left: 6px; }
 
 /* ===== RIGHT PANEL ===== */
-#loveHeart {
-  position: relative;
-  flex: 1;
-  height: 620px;
-  border-radius: 16px;
-  overflow: hidden;
-
+#loveHeart{
+  position:relative;
+  flex:1;
+  height:620px;
+  border-radius:16px;
+  overflow:hidden;
   background:
     radial-gradient(800px 600px at 30% 20%, rgba(120,140,255,0.20), transparent 60%),
     linear-gradient(180deg, #070815 0%, #03040b 100%);
 }
 
-/* ===== STARS ===== */
-#loveHeart::before {
-  content: "";
-  position: absolute;
-  inset: 0;
+/* Stars */
+#loveHeart::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
   background:
     radial-gradient(circle at 15% 25%, rgba(255,255,255,0.12) 1px, transparent 2px),
     radial-gradient(circle at 35% 70%, rgba(255,255,255,0.10) 1px, transparent 2px),
     radial-gradient(circle at 55% 35%, rgba(255,255,255,0.08) 1px, transparent 2px),
     radial-gradient(circle at 75% 60%, rgba(255,255,255,0.08) 1px, transparent 2px);
-  opacity: 0.8;
+  opacity:0.85;
+  animation: twinkle 4.8s ease-in-out infinite alternate;
+  mix-blend-mode: screen;
 }
 
-/* ===== MOON ===== */
-#moon {
-  position: absolute;
-  top: 24px;
-  right: 24px;
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
+@keyframes twinkle{
+  0%{ opacity:0.45; filter: blur(0px); }
+  100%{ opacity:0.9; filter: blur(0.5px); }
+}
+
+/* Moon with gentle float */
+#moon{
+  position:absolute;
+  top:22px;
+  right:22px;
+  width:120px;
+  height:120px;
+  border-radius:50%;
   background:
     radial-gradient(circle at 35% 30%, #fff, #dfe6ff 45%, #aab3d4 75%, #7a82a8 100%);
   box-shadow:
     0 0 30px rgba(220,230,255,0.35),
-    0 0 80px rgba(120,140,255,0.25);
+    0 0 90px rgba(120,140,255,0.25);
+  animation: moonFloat 4.5s ease-in-out infinite alternate;
 }
 
-/* ===== TEXT ===== */
-#words {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  z-index: 2;
+#moon::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  border-radius:50%;
+  background:
+    radial-gradient(circle at 38% 60%, rgba(120,130,170,0.25) 0 9px, transparent 10px),
+    radial-gradient(circle at 62% 42%, rgba(120,130,170,0.20) 0 7px, transparent 8px),
+    radial-gradient(circle at 55% 75%, rgba(120,130,170,0.16) 0 10px, transparent 11px);
+  opacity:0.85;
 }
 
-#messages {
-  font-size: 28px;
-  margin-bottom: 10px;
-  display: none;
+@keyframes moonFloat{
+  0%{ transform: translateY(0px); }
+  100%{ transform: translateY(10px); }
 }
 
-#elapseClock {
-  margin-top: 10px;
-  font-size: 18px;
+/* ===== TEXT / OVERLAY ===== */
+#words{
+  position:absolute;
+  inset:0;
+  z-index:2;
+}
+
+/* Side panel (top-right, next to moon) */
+#sidePanel{
+  position:absolute;
+  top:26px;
+  right:170px; /* leaves space for moon */
+  text-align:right;
+  padding:12px 14px;
+  border-radius:14px;
+  background: rgba(8,10,24,0.35);
+  box-shadow: 0 0 0 1px rgba(180,200,255,0.10) inset;
+  backdrop-filter: blur(6px);
+}
+
+/* Show by JS fadeIn, but default hidden looks cleaner on load */
+#messages{ display:none; font-size:22px; text-shadow: 0 0 18px rgba(120,140,255,0.18); }
+
+#elapseClock{
+  margin-top:10px;
+  font-size:16px;
   color: rgba(120,255,225,0.95);
+  text-shadow: 0 0 18px rgba(120,255,225,0.22);
 }
 
-#elapseClock .digit {
+#elapseClock .digit{
   font-family: digit;
-  font-size: 38px;
+  font-size:34px;
 }
 
-#loveu {
-  margin-top: 20px;
-  font-size: 22px;
-  display: none;
+/* Countdown block */
+#countdownBox{
+  display:none;
+  margin-top:12px;
 }
 
-#loveu .signature {
-  margin-top: 8px;
-  font-style: italic;
-  font-size: 18px;
+.countdownTitle{
+  font-size:13px;
+  opacity:0.85;
+  margin-bottom:6px;
+}
+
+#countdownClock{
+  font-size:16px;
+  color: rgba(255,120,200,0.92);
+  text-shadow: 0 0 18px rgba(255,120,200,0.18);
+}
+
+#countdownClock .digit{
+  font-family: digit;
+  font-size:30px;
+}
+
+#countdownClock .lbl{
+  font-size:12px;
+  margin-left:2px;
+  opacity:0.85;
+}
+
+/* Love text centered lower */
+#loveu{
+  display:none;
+  position:absolute;
+  left:50%;
+  bottom:95px;
+  transform: translateX(-50%);
+  text-align:center;
+  font-size:22px;
+  text-shadow: 0 0 20px rgba(255,79,216,0.10);
+}
+
+#loveu .signature{
+  margin-top:8px;
+  font-style:italic;
+  font-size:18px;
   color: rgba(255,120,200,0.9);
 }
 
 /* ===== RESPONSIVE ===== */
-@media (max-width: 1000px) {
-  #content {
-    flex-direction: column;
-  }
-
-  #code {
-    width: 100%;
-  }
-
-  #loveHeart {
-    height: 520px;
-  }
+@media (max-width: 1000px){
+  #content{ flex-direction:column; }
+  #code{ width:100%; }
+  #loveHeart{ height:520px; }
+  #sidePanel{ right:22px; top:160px; text-align:left; }
 }
